@@ -1,4 +1,4 @@
-public class Hotel {
+public class Tourist {
     private String firstName;
     private String lastName;
     private int mobile;
@@ -6,10 +6,11 @@ public class Hotel {
     private String city;
     private String state;
     private String country;
+    private String passportNumber;
     private String username;
     private String password;
 
-    public Hotel(){
+    public Tourist(){
     }
 
     public String getFirstName() {
@@ -68,6 +69,14 @@ public class Hotel {
         this.country = country;
     }
 
+    public String getPassportNumber() {
+        return passportNumber;
+    }
+
+    public void setPassportNumber(String passportNumber) {
+        this.passportNumber = passportNumber;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -83,6 +92,4 @@ public class Hotel {
     public void setPassword(String password) {
         this.password = password;
     }
-
-
 }
