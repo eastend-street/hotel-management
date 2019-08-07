@@ -1,12 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class Display extends JFrame {
+
+    public Connection con;
+
     public Display(){
         initDisplay();
         connectDatabaseTest();
@@ -29,8 +28,38 @@ public class Display extends JFrame {
     }
 
     void connectDatabaseTest(){
-        System.out.println("hello");
-        Connection connection_mysql = null;
-        connection_mysql = DriverManager.getConnection("jdbc:mysql://localhost:3306/sample", "user_name", "password");
+//        try{
+//            System.out.println("hello");
+//            Connection connection_mysql = null;
+//            connection_mysql = DriverManager.getConnection("jdbc:mysql://localhost:8889", "root", "root");
+//        } catch (SQLException e) {
+//            System.out.println("exception");
+//        }
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new ClassCastException("MySql driver not found");
+        }
+
+        try {
+            con = DriverManager.getConnection("jdbc:mysql://localhost:8889/test","root","root");
+        }catch (SQLException e) {
+            throw new ClassCastException("Database connection error. Check your credentials");
+        }
+        this.select();
+    }
+
+    public ResultSet select () {
+        ResultSet rs = null;
+        try {
+            Statement stmt = con.createStatement();
+            rs = stmt.executeQuery("SELECT * FROM test");
+            while(rs.next())
+                System.out.println(rs.getString("name"));
+            con.close();
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+        return rs;
     }
 }
