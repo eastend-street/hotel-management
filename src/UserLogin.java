@@ -1,36 +1,41 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
-public class UserLogin extends JFrame {
-    JLabel usernameLabel, passwordLabel, loginFormLabel;
-    JTextField username;
-    JPasswordField password;
-    JButton loginButton;
+public class UserLogin extends JFrame implements ActionListener {
+
+    private JFrame loginFrame;
+    private JFrame mainPageFrame;
 
     public UserLogin(){
         initUserLogin();
     }
 
 
-    void initUserLogin(){
+    private void initUserLogin(){
 
-        JFrame frame = new JFrame("Login");
+        loginFrame = new JFrame("Login");
+
 
         // All labels
 
-        loginFormLabel = new JLabel("Welcome!");
+        JLabel loginFormLabel = new JLabel("Welcome!");
         loginFormLabel.setForeground(Color.black);
         loginFormLabel.setFont(new Font("Serif", Font.BOLD, 20));
 
-        usernameLabel = new JLabel("Username");
-        passwordLabel = new JLabel("Password");
+
+        JLabel usernameLabel = new JLabel("Username");
+        JLabel passwordLabel = new JLabel("Password");
+
+        JLabel mainPageLabel = new JLabel("Main Page");
+        mainPageLabel.setFont(new Font("Serif", Font.BOLD, 20));
 
         // All text fields
 
-        username = new JTextField();
-        password = new JPasswordField();
+        JTextField username = new JTextField();
+        JPasswordField password = new JPasswordField();
 
-        loginButton = new JButton("Login");
+        JButton loginButton = new JButton("Login");
 
         // Components configuration
 
@@ -41,25 +46,38 @@ public class UserLogin extends JFrame {
         password.setBounds(240, 110, 200, 30);
         loginButton.setBounds(240, 160, 100, 30);
 
-        frame.add(loginFormLabel);
-        frame.add(usernameLabel);
-        frame.add(passwordLabel);
-        frame.add(username);
-        frame.add(password);
-        frame.add(loginButton);
+        mainPageLabel.setBounds(240, 30, 400, 30);
 
-        frame.setSize(550,300);
-        frame.setLayout(null);
-        frame.setVisible(true);
+
+        loginFrame.add(loginFormLabel);
+        loginFrame.add(usernameLabel);
+        loginFrame.add(passwordLabel);
+        loginFrame.add(username);
+        loginFrame.add(password);
+        loginFrame.add(loginButton);
+
+        loginFrame.setSize(550,300);
+        loginFrame.setLayout(null);
+        loginFrame.setVisible(true);
+
+
+        loginButton.addActionListener(this);
+
+
 
 
         // The code above is necessary to center the window at the center of the screen
 
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        frame.setLocation(dim.width/2-frame.getSize().width/2, dim.height/2-frame.getSize().height/2);
+        loginFrame.setLocation(dim.width/2- loginFrame.getSize().width/2, dim.height/2- loginFrame.getSize().height/2);
 
 
 
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        System.out.println("Button Pressed");
+        loginFrame.dispose();
     }
 }
 
