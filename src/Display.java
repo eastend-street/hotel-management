@@ -1,9 +1,15 @@
 import javax.swing.*;
 import java.awt.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class Display extends JFrame {
     public Display(){
         initDisplay();
+        connectDatabaseTest();
     }
 
     void initDisplay(){
@@ -21,5 +27,11 @@ public class Display extends JFrame {
         contentPane.add(p, BorderLayout.CENTER);
 
         this.setVisible(true);
+    }
+
+    void connectDatabaseTest(){
+        System.out.println("hello");
+        Connection connection_mysql = null;
+//        connection_mysql = DriverManager.getConnection("jdbc:mysql://localhost:3306/sample", "user_name", "password");
     }
 }
