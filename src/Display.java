@@ -19,6 +19,7 @@ public class Display extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel p = new JPanel();
+        JLabel label = new JLabel("Login");
         JButton button1 = new JButton("Login");
         p.add(button1);
         Container contentPane = getContentPane();
@@ -31,6 +32,6 @@ public class Display extends JFrame {
     void connectDatabaseTest(){
         System.out.println("hello");
         Connection connection_mysql = null;
-        connection_mysql = DriverManager.getConnection("jdbc:mysql://localhost:3306/sample", "user_name", "password");
+//        connection_mysql = DriverManager.getConnection("jdbc:mysql://localhost:3306/sample", "user_name", "password");
     }
 }
