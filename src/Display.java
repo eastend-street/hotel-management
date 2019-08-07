@@ -13,6 +13,7 @@ public class Display extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel p = new JPanel();
+        JLabel label = new JLabel("Login");
         JButton button1 = new JButton("Login");
         p.add(button1);
         Container contentPane = getContentPane();
